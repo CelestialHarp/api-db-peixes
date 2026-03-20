@@ -17,8 +17,8 @@ namespace API_DB_PESCES_em_C__bonitona.Data
             {
                 context.Usuarios.Add(new Usuario
                 {
-                    Username = "Dono",
-                    PasswordHash = BCrypt.Net.BCrypt.HashPassword("senha"),
+                    Username = "username",
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword("password"),
                     Cargo = "Owner"
                 });
             }
