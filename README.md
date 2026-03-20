@@ -116,9 +116,9 @@ A arquitetura do projeto segue o padrão **N-Tier** (Camadas), garantindo a sepa
 
 O banco de dados relacional é composto por 13 tabelas principais, divididas logicamente em dois domínios:
 
-1. **Domínio de Catálogo/Estoque:** Gerencia as `Especies`, `Pesces` (estoque físico), `Lotes`, `Precos`, e características biológicas como `GuildasTroficas`, `Comportamentos`, `EstadosSaudes` e `EstadosDesenvolvimentos`.
+1. **Domínio de Catálogo/Estoque:** Gerencia as `Especies`, `Pesces` (estoque físico), `Lotes`, `Precos`, e características biológicas como `Guildas_Troficas`, `Comportamentos`, `Estados_Saude` e `Estados_Desenvolvimento`.
 ![Diagrama do Domínio de Catálogo](group1pt.png)
-2. **Domínio de Vendas:** Controla `Usuarios` (com distinção de cargos/roles), `Carrinhos`, `ItensCarrinho`, `Pedidos` e `ItensPedido`.
+2. **Domínio de Vendas:** Controla `Usuarios` (com distinção de cargos/roles), `Carrinhos`, `Itens_Carrinho`, `Pedidos` e `Itens_Pedido`.
 ![Diagrama do Domínio de Vendas](group2pt.png)
 
 ### 🛡️ Integridade de Dados e Esquema SQL Bruto
