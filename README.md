@@ -3,6 +3,8 @@
 
 A RESTful API developed in **.NET 10** to serve as the back-end for an e-commerce platform specialized in selling fish. The system covers everything from catalog management, species, batches, and animal health status, to shopping cart control, orders, and user authentication.
 
+Disclamer: The strange name of the API and it's relative entity ('Pesces') in the database is just an inside joke.
+
 ## 🚀 Technologies and Architecture
 
 This project was built to consolidate back-end development knowledge using the .NET ecosystem, employing the following technologies:
@@ -93,6 +95,8 @@ As this is an evolving project, some points are already mapped out for future im
 # 🐟 E-Commerce API - Sistema de Venda de Peixes
 
 Uma API RESTful desenvolvida em **.NET 10** para atuar como o back-end de um e-commerce especializado na venda de peixes. O sistema abrange desde o gerenciamento de catálogo, espécies, lotes e estado de saúde dos animais, até o controle de carrinho de compras, pedidos e autenticação de usuários.
+
+Disclamer: O nome estranho da API e sua entidade relativa (Peixes, que eu troquei por Pesces) na database é só uma piada interna.
 
 ## 🚀 Tecnologias e Arquitetura
 
