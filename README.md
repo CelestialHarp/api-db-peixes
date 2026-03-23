@@ -90,7 +90,7 @@ As this is an evolving project, some points are already mapped out for future im
 * **[TD003] Secrets Management:** Strictly move all keys (like the JWT fallback) to environment variables outside the source code. (I think I already solved it but I'm still to check it)
 
 ## ✅ Solved Technical Debt:
-* **[TD001](partial)** Removed the 'pesces' inside joke, and padronized it all to portuguese in order for me to translate to english.
+* **[TD001](partial)** Removed the 'pesces' inside joke.
 
 Developed with perspicacity and much effort by Tarcyzio da Fonsêca Oliveira. https://www.linkedin.com/in/tarcyzio-da-fonseca-oliveira/
 
@@ -189,6 +189,6 @@ Como este é um projeto em evolução, alguns pontos já estão mapeados para fu
 * **Gerenciamento de Secrets:** Mover de forma estrita todas as chaves (como o fallback do JWT) para variáveis de ambiente fora do código-fonte. (acho que já fiz isso, depois eu checo)
 
 ## ✅ Dívida técnica quitada
-* [DT001](parcial): Retirei a piada interna "pesces", exceto da APi e do nome do banco pois são apenas o nome do banco e da API, não influem muito nos algoritmos.
+* [DT001](parcial): Retirei a piada interna.
 
 Desenvolvido com perspicácia e muito esforço por Tarcyzio da Fonsêca Oliveira. https://www.linkedin.com/in/tarcyzio-da-fonseca-oliveira/
