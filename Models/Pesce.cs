@@ -1,6 +1,6 @@
 ﻿namespace API_DB_PESCES_em_C__bonitona.Models;
 
-public partial class Pesce
+public partial class Peixe
 {
     public int Id { get; set; }
 

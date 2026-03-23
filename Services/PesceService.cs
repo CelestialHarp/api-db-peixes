@@ -42,7 +42,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
             if (especie == null) throw new Exception("Espécie inválida!");
 
 
-            var novoPeixe = new Pesce
+            var novoPeixe = new Peixe
             {
                 EspecieId = dto.EspecieId,
                 LoteId = dto.LoteId, // Pode ser null
@@ -53,7 +53,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
             };
 
 
-            _context.Pesces.Add(novoPeixe);
+            _context.Peixes.Add(novoPeixe);
 
 
             if (dto.LoteId.HasValue)
@@ -88,7 +88,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
         {
 
             var query =
-                _context.Pesces
+                _context.Peixes
                 .Include(p => p.Especie) 
                 .AsQueryable();
 

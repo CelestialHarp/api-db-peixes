@@ -73,7 +73,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
         public async Task<List<PeixeResponseDTO>> PesquisarPeixesAsync(string termoDeBusca)
         {
             // Subo os joins para o contexto, pra poder realizar as pesquisas.
-            var query = _context.Pesces
+            var query = _context.Peixes
                 .Include(p => p.Especie)
                     .ThenInclude(e => e.Comportamento)
                 .Include(p => p.Especie)

@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("API DB PESCES em C# bonitona")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bd93b47c0da66daf58a8512dbfbbbeaf349d78c")]
 [assembly: System.Reflection.AssemblyProductAttribute("API DB PESCES em C# bonitona")]
 [assembly: System.Reflection.AssemblyTitleAttribute("API DB PESCES em C# bonitona")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

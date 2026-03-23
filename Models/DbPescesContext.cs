@@ -25,7 +25,7 @@ public partial class DbPescesContext : DbContext
 
     public virtual DbSet<Lote> Lotes { get; set; }
 
-    public virtual DbSet<Pesce> Pesces { get; set; }
+    public virtual DbSet<Peixe> Peixes { get; set; }
 
     public virtual DbSet<Preco> Precos { get; set; }
 
@@ -150,7 +150,7 @@ public partial class DbPescesContext : DbContext
                 .HasColumnName("status");
         });
 
-        modelBuilder.Entity<Pesce>(entity =>
+        modelBuilder.Entity<Peixe>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("pesces_pkey");
 
@@ -166,22 +166,22 @@ public partial class DbPescesContext : DbContext
                 .HasMaxLength(10)
                 .HasColumnName("sexo");
 
-            entity.HasOne(d => d.Especie).WithMany(p => p.Pesces)
+            entity.HasOne(d => d.Especie).WithMany(p => p.Peixes)
                 .HasForeignKey(d => d.EspecieId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_especie_peixe");
 
-            entity.HasOne(d => d.EstadoDesenvolvimento).WithMany(p => p.Pesces)
+            entity.HasOne(d => d.EstadoDesenvolvimento).WithMany(p => p.Peixes)
                 .HasForeignKey(d => d.EstadoDesenvolvimentoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_estado_desenv_peixe");
 
-            entity.HasOne(d => d.EstadoSaude).WithMany(p => p.Pesces)
+            entity.HasOne(d => d.EstadoSaude).WithMany(p => p.Peixes)
                 .HasForeignKey(d => d.EstadoSaudeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_estado_saude_peixe");
 
-            entity.HasOne(d => d.Lote).WithMany(p => p.Pesces)
+            entity.HasOne(d => d.Lote).WithMany(p => p.Peixes)
                 .HasForeignKey(d => d.LoteId)
                 .HasConstraintName("fk_lote_peixe");
         });

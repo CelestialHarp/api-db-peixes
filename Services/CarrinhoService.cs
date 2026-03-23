@@ -41,7 +41,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
         public async Task<CarrinhoResponseDTO> AdicionarItemAsync(int usuarioId, int pesceId)
         {
             // Validações de Segurança e Concorrência
-            var peixeExiste = await _context.Pesces.AnyAsync(p => p.Id == pesceId);
+            var peixeExiste = await _context.Peixes.AnyAsync(p => p.Id == pesceId);
             if (!peixeExiste) throw new Exception("Peixe não encontrado no sistema.");
 
             var peixeEmOutroCarrinho = await _context.ItensCarrinho.AnyAsync(i => i.PesceId == pesceId);

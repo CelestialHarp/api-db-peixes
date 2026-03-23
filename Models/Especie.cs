@@ -28,7 +28,7 @@ public partial class Especie
 
     public virtual GuildaTrofica? GuildaTrofica { get; set; }
 
-    public virtual ICollection<Pesce> Pesces { get; set; } = new List<Pesce>();
+    public virtual ICollection<Peixe> Peixes { get; set; } = new List<Peixe>();
 
     public virtual ICollection<Preco> Precos { get; set; } = new List<Preco>();
 }

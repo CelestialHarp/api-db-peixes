@@ -66,8 +66,8 @@ CREATE TABLE precos (
     CONSTRAINT fk_estado_desenv_preco FOREIGN KEY (estado_desenvolvimento_id) REFERENCES estados_desenvolvimento (id)
 );
 
---  TABELA PESCES
-CREATE TABLE PESCES (
+--  TABELA Peixes
+CREATE TABLE Peixes (
     id SERIAL PRIMARY KEY,
     sexo VARCHAR(10) CHECK (sexo IN ('Macho', 'Femea', 'Indefinido')),
     data_nascimento DATE,
@@ -105,10 +105,10 @@ CREATE TABLE carrinhos (
 CREATE TABLE itens_carrinho (
     id SERIAL PRIMARY KEY,
     carrinho_id INTEGER NOT NULL,
-    pesce_id INTEGER UNIQUE NOT NULL, -- Garante que o mesmo peixe não pode estar em dois carrinhos ao mesmo tempo
+    peixe_id INTEGER UNIQUE NOT NULL, -- Garante que o mesmo peixe não pode estar em dois carrinhos ao mesmo tempo
     
     CONSTRAINT fk_carrinho_item FOREIGN KEY (carrinho_id) REFERENCES carrinhos (id),
-    CONSTRAINT fk_pesce_item FOREIGN KEY (pesce_id) REFERENCES pesces (id)
+    CONSTRAINT fk_peixe_item FOREIGN KEY (peixe_id) REFERENCES peixes (id)
 );
 
 -- O "equivalente" desses dois últimos para o evento de finalização de compra:
@@ -126,16 +126,16 @@ CREATE TABLE pedidos (
 CREATE TABLE itens_pedido (
     id SERIAL PRIMARY KEY,
     pedido_id INTEGER NOT NULL,
-    pesce_id INTEGER UNIQUE NOT NULL, -- O mesmo peixe não pode ser vendido duas vezes
+    peixe_id INTEGER UNIQUE NOT NULL, -- O mesmo peixe não pode ser vendido duas vezes
     preco_no_momento DECIMAL(8,2) NOT NULL,
     
     CONSTRAINT fk_pedido_item FOREIGN KEY (pedido_id) REFERENCES pedidos (id),
-    CONSTRAINT fk_pesce_pedido FOREIGN KEY (pesce_id) REFERENCES pesces (id)
+    CONSTRAINT fk_peixe_pedido FOREIGN KEY (peixe_id) REFERENCES peixes (id)
 );
 
 --little nuker just in case--
 
--- DROP TABLE IF EXISTS pesces CASCADE;
+-- DROP TABLE IF EXISTS peixes CASCADE;
 -- DROP TABLE IF EXISTS precos CASCADE;
 -- DROP TABLE IF EXISTS lotes CASCADE;
 -- DROP TABLE IF EXISTS especies CASCADE;

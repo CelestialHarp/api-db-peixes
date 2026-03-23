@@ -19,6 +19,6 @@ namespace API_DB_PESCES_em_C__bonitona.Models
         public decimal PrecoNoMomento { get; set; }
 
         public virtual Pedido? Pedido { get; set; }
-        public virtual Pesce? Pesce { get; set; }
+        public virtual Peixe? Pesce { get; set; }
     }
 }

@@ -131,3 +131,4 @@
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.Tokens.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/System.IdentityModel.Tokens.Jwt.dll
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/obj/Debug/net10.0/API DB PESCES em C# bonitona.sourcelink.json

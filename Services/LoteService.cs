@@ -35,7 +35,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
         {
             
             var lote = await _context.Lotes
-                .Include(l => l.Pesces)
+                .Include(l => l.Peixes)
                 .ThenInclude(p => p.Especie)
                 .FirstOrDefaultAsync(l => l.Id == id);
 
@@ -48,7 +48,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
             // ATENÇÃO: Fazer query dentro de foreach é ruim (N+1 problem), mas como um lote não tem e provavelmente nunca vai ter milhares de peixes, usar essa estratégia não tem tanto problema.
             // O ideal seria carregar todos os preços relevantes em memória antes.
             
-            foreach(var peixe in lote.Pesces)
+            foreach(var peixe in lote.Peixes)
             {
 
                 var precoMatriz = await _context.Precos
@@ -85,8 +85,8 @@ namespace API_DB_PESCES_em_C__bonitona.Services
         private LoteResponseDTO MapToResponse(Lote lote, decimal somaSugestao)
         {
             // Aqui você transformaria a lista de Models de Peixe em DTOs
-            var peixesDto = lote.Pesces.Select(p => new PeixeResponseDTO(
-                //falta ainda adicionar os outros campos do DTO (There is no argument given that corresponds to the required parameter 'EstadoDeDesenvolvimentoId' of 'PeixeResponseDTO.PeixeResponseDTO(int, int?, int, int, int, string, string, decimal)'), só que provavelmente vai dar o mesmo erro que dá no PesceService.cs
+            var peixesDto = lote.Peixes.Select(p => new PeixeResponseDTO(
+                //falta ainda adicionar os outros campos do DTO (There is no argument given that corresponds to the required parameter 'EstadoDeDesenvolvimentoId' of 'PeixeResponseDTO.PeixeResponseDTO(int, int?, int, int, int, string, string, decimal)'), só que provavelmente vai dar o mesmo erro que dá no Peixeservice.cs
                 p.Id,
                 p.LoteId,
                 p.EspecieId,
@@ -99,7 +99,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
             return new LoteResponseDTO(
                 lote.Id,
                 lote.Descricao,
-                lote.Pesces.Count(),
+                lote.Peixes.Count(),
                 new List<PeixeResponseDTO>(), // (Simplificado para o exemplo)
                 lote.PrecoLote ?? 0,          // Preço se já estiver fechado
                 somaSugestao                  // <--valor calculado

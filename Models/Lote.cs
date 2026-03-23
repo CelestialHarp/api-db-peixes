@@ -13,5 +13,5 @@ public partial class Lote
 
     public decimal? PrecoLote { get; set; }
 
-    public virtual ICollection<Pesce> Pesces { get; set; } = new List<Pesce>();
+    public virtual ICollection<Peixe> Peixes { get; set; } = new List<Peixe>();
 }

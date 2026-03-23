@@ -85,11 +85,14 @@ The original SQL DDL script used to construct the architecture is available in t
 ## 🛠️ Known Technical Debt & Roadmap
 
 As this is an evolving project, some points are already mapped out for future improvements:
-* **Naming Standardization:** The project mixes terms in Portuguese, "Portunhol" (e.g., `Pesces`), and english due to inside jokes during early development (I coudn't stand building a project this big alone without some fun). A global refactoring to English is planned to align with market standards (I'll try to do it with the lastest thing I've learned: regular expressions).
-* **Testing:** Implementation of unit tests (xUnit/Moq) in the Services layer.
-* **Secrets Management:** Strictly move all keys (like the JWT fallback) to environment variables outside the source code.
+* **[TD001] Naming Standardization:** The project mixes terms in Portuguese, "Portunhol" (e.g., `Pesces`), and english due to inside jokes during early development (I coudn't stand building a project this big alone without some fun). A global refactoring to English is planned to align with market standards (I'll try to do it with the lastest thing I've learned: regular expressions).
+* **[TD002] Testing:** Implementation of unit tests (xUnit/Moq) in the Services layer.
+* **[TD003] Secrets Management:** Strictly move all keys (like the JWT fallback) to environment variables outside the source code. (I think I already solved it but I'm still to check it)
 
+## ✅ Solved Technical Debt:
+* **[TD001](partial)** Removed the 'pesces' inside joke, and padronized it all to portuguese in order for me to translate to english.
 
+Developed with perspicacity and much effort by Tarcyzio da Fonsêca Oliveira. https://www.linkedin.com/in/tarcyzio-da-fonseca-oliveira/
 
 #[PT-BR]
 # 🐟 E-Commerce API - Sistema de Venda de Peixes
@@ -181,8 +184,11 @@ O script DDL SQL original usado para construir a arquitetura está disponível n
 ## 🛠️ Dívidas Técnicas Conhecidas (Tech Debt) e Roadmap
 
 Como este é um projeto em evolução, alguns pontos já estão mapeados para futuras melhorias:
-* **Padronização de Nomenclatura:** O projeto mescla termos em Português, "Portunhol" (ex: `Pesces`) e inglês devido a brincadeiras durante o desenvolvimento inicial (eu não aguentei desenvolver um projeto desse tamanho sem alguma diversão). Uma refatoração global para inglês está prevista para adequação aos padrões de mercado (Vou tentar fazê-la com a última coisa que aprendi: expressões regulares).
+* **Padronização de Nomenclatura:** O projeto usa termos em português e alguns termos em inglês. Uma refatoração global para inglês está prevista para adequação aos padrões de mercado (Vou tentar fazê-la com a última coisa que aprendi: expressões regulares).
 * **Testes:** Implementação de testes unitários (xUnit/Moq) na camada de Services.
-* **Gerenciamento de Secrets:** Mover de forma estrita todas as chaves (como o fallback do JWT) para variáveis de ambiente fora do código-fonte. (acho que n é mais necessário falar isso, vou remover)
+* **Gerenciamento de Secrets:** Mover de forma estrita todas as chaves (como o fallback do JWT) para variáveis de ambiente fora do código-fonte. (acho que já fiz isso, depois eu checo)
 
-Desenvolvido com perspicácia e muito esforço por [Tarcyzio da Fonsêca Oliveira]. <https://www.linkedin.com/in/tarcyzio-da-fonseca-oliveira/>
+## ✅ Dívida técnica quitada
+* [DT001](parcial): Retirei a piada interna "pesces", exceto da APi e do nome do banco pois são apenas o nome do banco e da API, não influem muito nos algoritmos.
+
+Desenvolvido com perspicácia e muito esforço por Tarcyzio da Fonsêca Oliveira. https://www.linkedin.com/in/tarcyzio-da-fonseca-oliveira/

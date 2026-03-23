@@ -119,7 +119,7 @@ namespace API_DB_PESCES_em_C__bonitona.Data
                     foreach (var especie in context.Especies.ToList())
                     {
                         // Adiciona o peixe no estoque
-                        context.Pesces.Add(new Pesce 
+                        context.Peixes.Add(new Peixe 
                         { 
                             EspecieId = especie.Id,
                             EstadoSaudeId = saudeSaudavel,
