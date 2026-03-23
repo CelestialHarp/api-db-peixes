@@ -181,4 +181,4 @@ Como este é um projeto em evolução, alguns pontos já estão mapeados para fu
 * **Testes:** Implementação de testes unitários (xUnit/Moq) na camada de Services.
 * **Gerenciamento de Secrets:** Mover de forma estrita todas as chaves (como o fallback do JWT) para variáveis de ambiente fora do código-fonte. (acho que n é mais necessário falar isso, vou remover)
 
-Desenvolvido com perspicácia e muito esforço por [Tarcyzio da Fonsêca Oliveira]. <meu linkedin>
+Desenvolvido com perspicácia e muito esforço por [Tarcyzio da Fonsêca Oliveira]. <https://www.linkedin.com/in/tarcyzio-da-fonseca-oliveira/>
