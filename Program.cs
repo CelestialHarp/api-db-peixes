@@ -66,7 +66,7 @@ builder.Services.AddSwaggerGen(c =>
 
 // Injeções de dependência
 builder.Services.AddScoped<AuthService>();
-builder.Services.AddScoped<PesceService>();
+builder.Services.AddScoped<PeixeService>();
 builder.Services.AddScoped<PrecoService>();
 builder.Services.AddScoped<LoteService>();
 builder.Services.AddScoped<CatalogoService>();

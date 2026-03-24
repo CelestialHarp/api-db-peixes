@@ -7,11 +7,11 @@ namespace API_DB_PESCES_em_C__bonitona.Controllers
 {
     [ApiController]
     [Route("api/peixes")]
-    public class PesceController : ControllerBase
+    public class PeixeController : ControllerBase
     {
-        private readonly PesceService _service;
+        private readonly PeixeService _service;
 
-        public PesceController(PesceService service)
+        public PeixeController(PeixeService service)
         {
             _service = service;
         }

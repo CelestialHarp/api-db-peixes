@@ -5,10 +5,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API_DB_PESCES_em_C__bonitona.Services
 {
-    public class PesceService
+    public class PeixeService
     {
         private readonly DbPescesContext _context;
-        public PesceService(DbPescesContext context)
+        public PeixeService(DbPescesContext context)
         {
             _context = context;
         }
