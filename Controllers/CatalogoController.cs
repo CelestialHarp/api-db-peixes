@@ -26,7 +26,7 @@ namespace API_DB_PESCES_em_C__bonitona.Controllers
         [Authorize(Roles = "Admin,Owner")]
         public async Task<IActionResult> ListarComportamentos()
         {
-            var lista = await _service.ListarComportamentos();
+            var lista = await _service.ListarComportamentosAsync();
             return Ok(lista);
         }
 

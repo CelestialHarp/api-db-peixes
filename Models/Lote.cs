@@ -7,7 +7,7 @@ public partial class Lote
 
     public int? Status { get; set; }
 
-    public string Descricao { get; set; } = null!;
+    public string Description { get; set; } = null!;
 
     public int? QuantidadePeixes { get; set; }
 

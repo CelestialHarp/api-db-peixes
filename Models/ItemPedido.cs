@@ -13,12 +13,12 @@ namespace API_DB_PESCES_em_C__bonitona.Models
         public int PedidoId { get; set; }
 
         [Column("pesce_id")]
-        public int PesceId { get; set; }
+        public int PeixeId { get; set; }
 
         [Column("preco_no_momento")]
         public decimal PrecoNoMomento { get; set; }
 
-        public virtual Pedido? Pedido { get; set; }
-        public virtual Peixe? Pesce { get; set; }
+        public virtual Order? Pedido { get; set; }
+        public virtual Peixe? Peixe { get; set; }
     }
 }

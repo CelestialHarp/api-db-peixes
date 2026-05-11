@@ -14,9 +14,9 @@ namespace API_DB_PESCES_em_C__bonitona.Models
         public int CarrinhoId { get; set; }
 
         [Column("pesce_id")]
-        public int PesceId { get; set; }
+        public int PeixeId { get; set; }
 
         public virtual Carrinho? Carrinho { get; set; }
-        public virtual Peixe? Pesce { get; set; }
+        public virtual Peixe? Peixe { get; set; }
     }
 }

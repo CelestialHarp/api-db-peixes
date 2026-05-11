@@ -23,52 +23,52 @@ namespace API_DB_PESCES_em_C__bonitona.Services
             var carrinho = 
             await _context.Carrinhos
             .AsSplitQuery()
-            .Include(c => c.Itens)
-            .ThenInclude(i => i.Pesce)
+            .Include(c => c.Items)
+            .ThenInclude(i => i.Peixe)
             .ThenInclude(p => p.Especie)
             .ThenInclude(e => e.Precos)
-            .FirstOrDefaultAsync(c => c.UsuarioId == usuarioId);
+            .FirstOrDefaultAsync(c => c.UserId == usuarioId);
 
-            if (carrinho == null || !carrinho.Itens.Any())
+            if (carrinho == null || !carrinho.Items.Any())
             {
                 throw new Exception("Seu carrinho está vazio");
             }
             
-            var pedido = new Pedido
+            var pedido = new Order
             {
-                UsuarioId = usuarioId,
+                UserId = usuarioId,
                 ValorTotal = 0,
                 Status = StatusPedido.Confirmado,
-                Itens = [] // Prepara a gaveta vazia de itens (usando o atalho)
+                Items = [] // Prepara a gaveta vazia de itens (usando o atalho)
             };
 
             var itensDTO = new List<ItemPedidoResponseDTO>();
 
-            foreach (var item in carrinho.Itens)
+            foreach (var item in carrinho.Items)
             {
-                if (item.Pesce == null || item.Pesce.Especie == null) continue;
+                if (item.Peixe == null || item.Peixe.Especie == null) continue;
 
                 // Encontra o preço exato com base na espécie, saúde e desenvolvimento atual do peixe
-                var precoTabela = item.Pesce.Especie.Precos.FirstOrDefault
+                var precoTabela = item.Peixe.Especie.Precos.FirstOrDefault
                 (p => 
-                    p.EstadoSaudeId == item.Pesce.EstadoSaudeId &&
-                    p.EstadoDesenvolvimentoId == item.Pesce.EstadoDesenvolvimentoId
+                    p.EstadoSaudeId == item.Peixe.HealthStateId &&
+                    p.EstadoDesenvolvimentoId == item.Peixe.EstadoDesenvolvimentoId
                 );
 
                 decimal preco = precoTabela?.Valor ?? throw new Exception("Programação defensiva. Se, de algum modo, alguém burlar a vitrine, dá nisso.");
 
-                pedido.Itens.Add(new ItemPedido { PesceId = item.PesceId, PrecoNoMomento = preco }); 
+                pedido.Items.Add(new ItemPedido { PeixeId = item.PeixeId, PrecoNoMomento = preco }); 
                 pedido.ValorTotal += preco;
 
-                string nome = item.Pesce.Especie.NomeVulgar ?? item.Pesce.Especie.Taxon;
-                itensDTO.Add(new ItemPedidoResponseDTO(0, item.PesceId, nome, preco));
+                string nome = item.Peixe.Especie.NomeVulgar ?? item.Peixe.Especie.Taxon;
+                itensDTO.Add(new ItemPedidoResponseDTO(0, item.PeixeId, nome, preco));
             }
 
             _context.Pedidos.Add(pedido);
-            _context.ItensCarrinho.RemoveRange(carrinho.Itens);
+            _context.ItensCarrinho.RemoveRange(carrinho.Items);
             await _context.SaveChangesAsync();
 
-            return new PedidoResponseDTO(pedido.Id, pedido.UsuarioId, pedido.ValorTotal, pedido.Status, itensDTO);
+            return new PedidoResponseDTO(pedido.Id, pedido.UserId, pedido.ValorTotal, pedido.Status, itensDTO);
 
 
         }

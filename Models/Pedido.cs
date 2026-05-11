@@ -5,13 +5,13 @@ using API_DB_PESCES_em_C__bonitona.Enums;
 namespace API_DB_PESCES_em_C__bonitona.Models
 {
     [Table("pedidos")]
-    public class Pedido
+    public class Order
     {
         [Column("id")]
         public int Id { get; set; }
 
         [Column("usuario_id")]
-        public int UsuarioId { get; set; }
+        public int UserId { get; set; }
 
         [Column("data_pedido")]
         public DateTime DataCriacao {get; set;}
@@ -22,8 +22,8 @@ namespace API_DB_PESCES_em_C__bonitona.Models
         [Column("status")]
         public StatusPedido Status { get; set; } = StatusPedido.Confirmado;
 
-        public virtual Usuario? Usuario { get; set; }
-        public virtual ICollection<ItemPedido> Itens { get; set; } = []; //= new List<ItemPedido>(); 
+        public virtual Usuario? User { get; set; }
+        public virtual ICollection<ItemPedido> Items { get; set; } = []; //= new List<ItemPedido>(); 
         
     }
 }

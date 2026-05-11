@@ -19,7 +19,7 @@ namespace API_DB_PESCES_em_C__bonitona.Data
                 {
                     Username = "username",
                     PasswordHash = BCrypt.Net.BCrypt.HashPassword("password"),
-                    Cargo = "Owner"
+                    Role = "Owner"
                 });
             }
 
@@ -36,9 +36,9 @@ namespace API_DB_PESCES_em_C__bonitona.Data
             }
 
             // 3. Estados de Saúde
-            if (!context.EstadosSaudes.Any())
+            if (!context.EstadosSaude.Any())
             {
-                context.EstadosSaudes.AddRange(
+                context.EstadosSaude.AddRange(
                     new EstadoSaude { Descricao = "Saudável" },
                     new EstadoSaude { Descricao = "Doente" },
                     new EstadoSaude { Descricao = "Em Tratamento" }
@@ -46,9 +46,9 @@ namespace API_DB_PESCES_em_C__bonitona.Data
             }
 
             // 4. Estados de Desenvolvimento
-            if (!context.EstadosDesenvolvimentos.Any())
+            if (!context.EstadosDesenvolvimento.Any())
             {
-                context.EstadosDesenvolvimentos.AddRange(
+                context.EstadosDesenvolvimento.AddRange(
                     new EstadoDesenvolvimento { Descricao = "Alevino" },
                     new EstadoDesenvolvimento { Descricao = "Juvenil" },
                     new EstadoDesenvolvimento { Descricao = "Adulto" }
@@ -85,8 +85,8 @@ namespace API_DB_PESCES_em_C__bonitona.Data
                     var guildaOnivoro = context.GuildasTroficas.FirstOrDefault(g => g.Nome == "Onívoro")?.Id ?? 1;
                     var guildaPiscivoro = context.GuildasTroficas.FirstOrDefault(g => g.Nome == "Piscívoros")?.Id ?? 1;
 
-                    var saudeSaudavel = context.EstadosSaudes.FirstOrDefault(e => e.Descricao == "Saudável")?.Id ?? 1;
-                    var desenvAdulto = context.EstadosDesenvolvimentos.FirstOrDefault(e => e.Descricao == "Adulto")?.Id ?? 1;
+                    var saudeSaudavel = context.EstadosSaude.FirstOrDefault(e => e.Descricao == "Saudável")?.Id ?? 1;
+                    var desenvAdulto = context.EstadosDesenvolvimento.FirstOrDefault(e => e.Descricao == "Adulto")?.Id ?? 1;
 
                     //Daqui pra cima, é tudo inútil, daqui pra baixo, normalmente se eliminaria.
 
@@ -122,7 +122,7 @@ namespace API_DB_PESCES_em_C__bonitona.Data
                         context.Peixes.Add(new Peixe 
                         { 
                             EspecieId = especie.Id,
-                            EstadoSaudeId = saudeSaudavel,
+                            HealthStateId = saudeSaudavel,
                             EstadoDesenvolvimentoId = desenvAdulto,
                             Sexo = especie.NomeVulgar == "Betta" ? "Macho" : null // Bettas vendidos costumam ser machos por causa da cauda! deixei assim pq n tem problema, nesse caso.
                         });

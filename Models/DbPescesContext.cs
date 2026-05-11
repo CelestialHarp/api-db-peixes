@@ -19,9 +19,9 @@ public partial class DbPescesContext : DbContext
 
     public virtual DbSet<Especie> Especies { get; set; }
 
-    public virtual DbSet<EstadoDesenvolvimento> EstadosDesenvolvimentos { get; set; }
+    public virtual DbSet<EstadoDesenvolvimento> EstadosDesenvolvimento { get; set; }
 
-    public virtual DbSet<EstadoSaude> EstadosSaudes { get; set; }
+    public virtual DbSet<EstadoSaude> EstadosSaude { get; set; }
 
     public virtual DbSet<Lote> Lotes { get; set; }
 
@@ -35,14 +35,17 @@ public partial class DbPescesContext : DbContext
 
     public virtual DbSet<ItemCarrinho> ItensCarrinho { get; set; }
 
-    public virtual DbSet<Pedido> Pedidos { get; set; }
+    public virtual DbSet<Order> Pedidos { get; set; }
 
     public virtual DbSet<ItemPedido> ItensPedido { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseNpgsql("Host=localhost;port=5432;Database=DB_PESCES;username=postgres;password=");
-
+    {
+        if (!optionsBuilder.IsConfigured)
+        {
+            optionsBuilder.UseNpgsql("Host=localhost;port=5432;Database=DB_PESCES;username=postgres;password=");
+        }
+    }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Comportamento>(entity =>
@@ -136,7 +139,7 @@ public partial class DbPescesContext : DbContext
             entity.ToTable("lotes");
 
             entity.Property(e => e.Id).HasColumnName("id");
-            entity.Property(e => e.Descricao)
+            entity.Property(e => e.Description)
                 .HasMaxLength(255)
                 .HasColumnName("descricao");
             entity.Property(e => e.PrecoLote)
@@ -160,7 +163,7 @@ public partial class DbPescesContext : DbContext
             entity.Property(e => e.DataNascimento).HasColumnName("data_nascimento");
             entity.Property(e => e.EspecieId).HasColumnName("especie_id");
             entity.Property(e => e.EstadoDesenvolvimentoId).HasColumnName("estado_desenvolvimento_id");
-            entity.Property(e => e.EstadoSaudeId).HasColumnName("estado_saude_id");
+            entity.Property(e => e.HealthStateId).HasColumnName("estado_saude_id");
             entity.Property(e => e.LoteId).HasColumnName("lote_id");
             entity.Property(e => e.Sexo)
                 .HasMaxLength(10)
@@ -177,7 +180,7 @@ public partial class DbPescesContext : DbContext
                 .HasConstraintName("fk_estado_desenv_peixe");
 
             entity.HasOne(d => d.EstadoSaude).WithMany(p => p.Peixes)
-                .HasForeignKey(d => d.EstadoSaudeId)
+                .HasForeignKey(d => d.HealthStateId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("fk_estado_saude_peixe");
 
@@ -221,10 +224,10 @@ public partial class DbPescesContext : DbContext
             entity.HasKey(e => e.Id).HasName("carrinhos_pkey");
             
             // Garante que cada usuário só tem 1 carrinho ativo
-            entity.HasIndex(e => e.UsuarioId, "carrinhos_usuario_id_key").IsUnique();
+            entity.HasIndex(e => e.UserId, "carrinhos_usuario_id_key").IsUnique();
 
-            entity.HasOne(d => d.Usuario).WithMany()
-                .HasForeignKey(d => d.UsuarioId)
+            entity.HasOne(d => d.User).WithMany()
+                .HasForeignKey(d => d.UserId)
                 .HasConstraintName("fk_usuario_carrinho");
         });
 
@@ -233,23 +236,23 @@ public partial class DbPescesContext : DbContext
             entity.HasKey(e => e.Id).HasName("itens_carrinho_pkey");
 
             // A MÁGICA: Garante que o peixe não pode estar em dois carrinhos ao mesmo tempo
-            entity.HasIndex(e => e.PesceId, "itens_carrinho_pesce_id_key").IsUnique();
+            entity.HasIndex(e => e.PeixeId, "itens_carrinho_pesce_id_key").IsUnique();
 
-            entity.HasOne(d => d.Carrinho).WithMany(p => p.Itens)
+            entity.HasOne(d => d.Carrinho).WithMany(p => p.Items)
                 .HasForeignKey(d => d.CarrinhoId)
                 .HasConstraintName("fk_carrinho_item");
 
-            entity.HasOne(d => d.Pesce).WithMany()
-                .HasForeignKey(d => d.PesceId)
+            entity.HasOne(d => d.Peixe).WithMany()
+                .HasForeignKey(d => d.PeixeId)
                 .HasConstraintName("fk_pesce_item");
         });
 
-        modelBuilder.Entity<Pedido>(entity =>
+        modelBuilder.Entity<Order>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("pedidos_pkey");
 
-            entity.HasOne(d => d.Usuario).WithMany()
-                .HasForeignKey(d => d.UsuarioId)
+            entity.HasOne(d => d.User).WithMany()
+                .HasForeignKey(d => d.UserId)
                 .HasConstraintName("fk_usuario_pedido");
         });
 
@@ -258,14 +261,14 @@ public partial class DbPescesContext : DbContext
             entity.HasKey(e => e.Id).HasName("itens_pedido_pkey");
 
             // A MÁGICA: Garante que o peixe só pode ser vendido uma única vez na história
-            entity.HasIndex(e => e.PesceId, "itens_pedido_pesce_id_key").IsUnique();
+            entity.HasIndex(e => e.PeixeId, "itens_pedido_pesce_id_key").IsUnique();
 
-            entity.HasOne(d => d.Pedido).WithMany(p => p.Itens)
+            entity.HasOne(d => d.Pedido).WithMany(p => p.Items)
                 .HasForeignKey(d => d.PedidoId)
                 .HasConstraintName("fk_pedido_item");
 
-            entity.HasOne(d => d.Pesce).WithMany()
-                .HasForeignKey(d => d.PesceId)
+            entity.HasOne(d => d.Peixe).WithMany()
+                .HasForeignKey(d => d.PeixeId)
                 .HasConstraintName("fk_pesce_pedido");
         });
 

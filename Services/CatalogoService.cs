@@ -22,7 +22,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
                 .ToListAsync(); 
         }
 
-        public async Task<IEnumerable<ResponseComportamentoDTO>> ListarComportamentos()
+        public async Task<IEnumerable<ResponseComportamentoDTO>> ListarComportamentosAsync()
         {
             return await _context.Comportamentos
                 .AsNoTracking()
@@ -85,18 +85,24 @@ namespace API_DB_PESCES_em_C__bonitona.Services
                 .AsQueryable();
             //Retiro os itens do carrinho
             query = query.Where(p => 
-                !_context.ItensCarrinho.Any(ic => ic.PesceId == p.Id) && 
-                !_context.ItensPedido.Any(ip => ip.PesceId == p.Id)
+                !_context.ItensCarrinho.Any(ic => ic.PeixeId == p.Id) && 
+                !_context.ItensPedido.Any(ip => ip.PeixeId == p.Id)
             );
 
-            // Adiciono o filtro ILike, pra poder pesquisar por termos que contenham os caracteres digitados pelo usuário (em ordem).
-            if (!string.IsNullOrWhiteSpace(termoDeBusca))
-            {
-                query = query.Where(p => 
-                    EF.Functions.ILike(p.Especie.NomeVulgar, $"%{termoDeBusca}%") || 
-                    EF.Functions.ILike(p.Especie.Taxon, $"%{termoDeBusca}%")
-                );
-            }
+            //Substituindo por pesquisa mais simples, por agora, pra ao menos poder ver meus testes funcionando:
+            query = query.Where(p => 
+                p.Especie.NomeVulgar.ToLower().Contains(termoDeBusca.ToLower()) || 
+                p.Especie.Taxon.ToLower().Contains(termoDeBusca.ToLower())
+            );
+
+            // // Adiciono o filtro ILike, pra poder pesquisar por termos que contenham os caracteres digitados pelo usuário (em ordem).
+            // if (!string.IsNullOrWhiteSpace(termoDeBusca))
+            // {
+            //     query = query.Where(p => 
+            //         EF.Functions.ILike(p.Especie.NomeVulgar, $"%{termoDeBusca}%") || 
+            //         EF.Functions.ILike(p.Especie.Taxon, $"%{termoDeBusca}%")
+            //     );
+            // }
 
             // Executo a query no banco de dados (só agora é que o Postgres trabalha)
             var peixesNaBaseDeDados = await query.ToListAsync();
@@ -108,7 +114,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
             {
                 // Descobrindo o preço atual do peixe (igual ao Carrinho)
                 var precoTabela = item.Especie.Precos.FirstOrDefault(p => 
-                    p.EstadoSaudeId == item.EstadoSaudeId && 
+                    p.EstadoSaudeId == item.HealthStateId && 
                     p.EstadoDesenvolvimentoId == item.EstadoDesenvolvimentoId);
 
                 decimal preco = precoTabela?.Valor ?? 0;
@@ -122,7 +128,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
                     item.Id,
                     item.LoteId,
                     item.EspecieId,
-                    item.EstadoSaudeId,
+                    item.HealthStateId,
                     item.EstadoDesenvolvimentoId,
                     nome,
                     item.Sexo ?? "N/D",

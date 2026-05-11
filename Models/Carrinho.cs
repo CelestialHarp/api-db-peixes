@@ -9,13 +9,13 @@ namespace API_DB_PESCES_em_C__bonitona.Models
         public int Id { get; set; }
 
         [Column("usuario_id")]
-        public int UsuarioId { get; set; }
+        public int UserId { get; set; }
 
         [Column("data_criacao")]
         public DateTime DataCriacao {get; set;}
 
-        public virtual Usuario? Usuario { get; set; }
-        public virtual ICollection<ItemCarrinho> Itens { get; set; } = []; // = new List<ItemCarrinho>();
+        public virtual Usuario? User { get; set; }
+        public virtual ICollection<ItemCarrinho> Items { get; set; } = []; // = new List<ItemCarrinho>();
         
     }
 }

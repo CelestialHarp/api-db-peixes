@@ -13,6 +13,6 @@ namespace API_DB_PESCES_em_C__bonitona.Models
         [Column("password_hash")]
         public string PasswordHash { get; set; } = string.Empty;
         [Column("cargo")]
-        public string Cargo { get; set; } = string.Empty;
+        public string Role { get; set; } = string.Empty;
     }
 }

@@ -6,7 +6,9 @@
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/API DB PESCES em C# bonitona.runtimeconfig.json
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/API DB PESCES em C# bonitona.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/API DB PESCES em C# bonitona.pdb
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/BCrypt.Net-Next.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Humanizer.dll
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.Build.Framework.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.CodeAnalysis.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.CodeAnalysis.CSharp.dll
@@ -19,18 +21,28 @@
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.EntityFrameworkCore.Design.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.EntityFrameworkCore.Relational.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.Extensions.DependencyModel.dll
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.Abstractions.dll
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.Logging.dll
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.dll
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.Tokens.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.OpenApi.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.VisualStudio.SolutionPersistence.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Mono.TextTemplating.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Newtonsoft.Json.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Npgsql.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Swashbuckle.AspNetCore.Swagger.dll
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/System.CodeDom.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/System.Composition.AttributedModel.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/System.Composition.Convention.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/System.Composition.Hosting.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/System.Composition.Runtime.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/System.Composition.TypedParts.dll
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/System.IdentityModel.Tokens.Jwt.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/cs/Microsoft.CodeAnalysis.resources.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/de/Microsoft.CodeAnalysis.resources.dll
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/es/Microsoft.CodeAnalysis.resources.dll
@@ -104,6 +116,7 @@
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/obj/Debug/net10.0/API DB PESCES em C# bonitona.csproj.CoreCompileInputs.cache
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/obj/Debug/net10.0/API DB PESCES em C# bonitona.MvcApplicationPartsAssemblyInfo.cs
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/obj/Debug/net10.0/API DB PESCES em C# bonitona.MvcApplicationPartsAssemblyInfo.cache
+/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/obj/Debug/net10.0/API DB PESCES em C# bonitona.sourcelink.json
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/obj/Debug/net10.0/rjimswa.dswa.cache.json
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/obj/Debug/net10.0/rjsmrazor.dswa.cache.json
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/obj/Debug/net10.0/rjsmcshtml.dswa.cache.json
@@ -119,16 +132,3 @@
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/obj/Debug/net10.0/API DB PESCES em C# bonitona.pdb
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/obj/Debug/net10.0/API DB PESCES em C# bonitona.genruntimeconfig.cache
 /home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/obj/Debug/net10.0/ref/API DB PESCES em C# bonitona.dll
-/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Swashbuckle.AspNetCore.Swagger.dll
-/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerGen.dll
-/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Swashbuckle.AspNetCore.SwaggerUI.dll
-/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/BCrypt.Net-Next.dll
-/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
-/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.Abstractions.dll
-/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.JsonWebTokens.dll
-/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.Logging.dll
-/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.dll
-/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
-/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/Microsoft.IdentityModel.Tokens.dll
-/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/bin/Debug/net10.0/System.IdentityModel.Tokens.Jwt.dll
-/home/dev/Documents/Minhas coisas/Programming/C#/API DB PESCES em C# bonitona/obj/Debug/net10.0/API DB PESCES em C# bonitona.sourcelink.json

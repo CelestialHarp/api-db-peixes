@@ -18,7 +18,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
         {
             var novoLote = new Lote
             { 
-                Descricao = dto.Descricao,
+                Description = dto.Descricao,
                 Status = (int)StatusLote.Aberto,
                 QuantidadePeixes = 0,
                 PrecoLote = 0,
@@ -53,7 +53,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
 
                 var precoMatriz = await _context.Precos
                     .Where(p => p.EspecieId == peixe.EspecieId&&
-                    p.EstadoSaudeId == peixe.EstadoSaudeId&&
+                    p.EstadoSaudeId == peixe.HealthStateId&&
                     p.EstadoDesenvolvimentoId == peixe.EstadoDesenvolvimentoId)
                     .Select(p => p.Valor)
                     .FirstOrDefaultAsync();
@@ -90,7 +90,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
                 p.Id,
                 p.LoteId,
                 p.EspecieId,
-                p.EstadoSaudeId,
+                p.HealthStateId,
                 p.EstadoDesenvolvimentoId,
                 p.Especie?.NomeVulgar ?? "N/A", // Requer .Include no nível da espécie para obter o nome
                 p.Sexo,
@@ -98,7 +98,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
             )).ToList();
             return new LoteResponseDTO(
                 lote.Id,
-                lote.Descricao,
+                lote.Description,
                 lote.Peixes.Count(),
                 new List<PeixeResponseDTO>(), // (Simplificado para o exemplo)
                 lote.PrecoLote ?? 0,          // Preço se já estiver fechado

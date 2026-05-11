@@ -46,7 +46,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
             {
                 EspecieId = dto.EspecieId,
                 LoteId = dto.LoteId, // Pode ser null
-                EstadoSaudeId = dto.EstadoDeSaudeId,
+                HealthStateId = dto.EstadoDeSaudeId,
                 EstadoDesenvolvimentoId = dto.EstadoDeDesenvolvimentoId,
                 DataNascimento = DateOnly.FromDateTime(DateTime.Now),
                 Sexo = dto.Sexo // Ou viria do DTO
@@ -75,7 +75,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
                 */
 
                 novoPeixe.EspecieId,
-                novoPeixe.EstadoSaudeId,
+                novoPeixe.HealthStateId,
                 novoPeixe.EstadoDesenvolvimentoId,
                 especie.NomeVulgar,
                 novoPeixe.Sexo,
@@ -110,7 +110,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
                 var preco = await _context.Precos
                     .Where(pr => 
                     pr.EspecieId == p.EspecieId && 
-                    pr.EstadoSaudeId == p.EstadoSaudeId && 
+                    pr.EstadoSaudeId == p.HealthStateId && 
                     pr.EstadoDesenvolvimentoId == p.EstadoDesenvolvimentoId)
                     .Select(pr => pr.Valor)
                     .FirstOrDefaultAsync();
@@ -119,7 +119,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
                     p.Id,
                     p.LoteId,
                     p.EspecieId,
-                    p.EstadoSaudeId,
+                    p.HealthStateId,
                     p.EstadoDesenvolvimentoId,
                     p.Especie.NomeVulgar,
                     p.Sexo,

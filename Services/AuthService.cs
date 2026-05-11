@@ -39,7 +39,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
                 Subject = new ClaimsIdentity(
                 [
                     new(ClaimTypes.Name, usuario.Username),
-                    new(ClaimTypes.Role, usuario.Cargo),
+                    new(ClaimTypes.Role, usuario.Role),
                     new(ClaimTypes.NameIdentifier, usuario.Id.ToString()) // <-- Aqui vai o cargo
                 ]),
                 Expires = DateTime.UtcNow.AddHours(5), // Token vale por um turno de trabalho
@@ -62,7 +62,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
                 Username = dto.Username,
                 PasswordHash = BCrypt.Net.BCrypt.HashPassword(dto.Password), // Cria o Hash seguro
                 
-                Cargo = "Cliente"
+                Role = "Cliente"
             };
 
             _context.Usuarios.Add(novoUsuario);

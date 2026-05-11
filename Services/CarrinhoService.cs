@@ -22,11 +22,11 @@ namespace API_DB_PESCES_em_C__bonitona.Services
             var carrinho = 
             await _context.Carrinhos
             .AsSplitQuery()
-            .Include(c => c.Itens)
-            .ThenInclude(i => i.Pesce)
+            .Include(c => c.Items)
+            .ThenInclude(i => i.Peixe)
             .ThenInclude(p => p.Especie)
             .ThenInclude(e => e.Precos) // Pegando preço para calcular o total
-            .FirstOrDefaultAsync(c => c.UsuarioId == usuarioId);
+            .FirstOrDefaultAsync(c => c.UserId == usuarioId);
 
             if (carrinho == null)
             {
@@ -44,18 +44,18 @@ namespace API_DB_PESCES_em_C__bonitona.Services
             var peixeExiste = await _context.Peixes.AnyAsync(p => p.Id == pesceId);
             if (!peixeExiste) throw new Exception("Peixe não encontrado no sistema.");
 
-            var peixeEmOutroCarrinho = await _context.ItensCarrinho.AnyAsync(i => i.PesceId == pesceId);
+            var peixeEmOutroCarrinho = await _context.ItensCarrinho.AnyAsync(i => i.PeixeId == pesceId);
             if (peixeEmOutroCarrinho) throw new Exception("Lamentamos, mas este peixe já está no carrinho de outro cliente.");
 
-            var peixeJaVendido = await _context.ItensPedido.AnyAsync(i => i.PesceId == pesceId);
+            var peixeJaVendido = await _context.ItensPedido.AnyAsync(i => i.PeixeId == pesceId);
             if (peixeJaVendido) throw new Exception("Este peixe já foi vendido.");
 
             // Procura o carrinho do usuário e se não existir cria um novo
-            var carrinho = await _context.Carrinhos.FirstOrDefaultAsync(c => c.UsuarioId == usuarioId);
+            var carrinho = await _context.Carrinhos.FirstOrDefaultAsync(c => c.UserId == usuarioId);
             
             if (carrinho == null)
             {
-                carrinho = new Carrinho { UsuarioId = usuarioId };
+                carrinho = new Carrinho { UserId = usuarioId };
                 _context.Carrinhos.Add(carrinho);
                 await _context.SaveChangesAsync(); 
             }
@@ -64,7 +64,7 @@ namespace API_DB_PESCES_em_C__bonitona.Services
             var novoItem = new ItemCarrinho
             {
                 CarrinhoId = carrinho.Id,
-                PesceId = pesceId
+                PeixeId = pesceId
             };
 
             _context.ItensCarrinho.Add(novoItem);
@@ -77,15 +77,15 @@ namespace API_DB_PESCES_em_C__bonitona.Services
         public async Task<CarrinhoResponseDTO> RemoverItemAsync(int usuarioId, int pesceId)
         {
             // Depois vou procurar qual é a convenção em C# para comentários que já foram feitos, para ver se cai bem explicar snipets que já foram explicados antes, pra facilitar a vida de que der um peek implementation
-            var carrinho = await _context.Carrinhos.Include(c => c.Itens)
-            .FirstOrDefaultAsync(c => c.UsuarioId == usuarioId);
+            var carrinho = await _context.Carrinhos.Include(c => c.Items)
+            .FirstOrDefaultAsync(c => c.UserId == usuarioId);
             //Acho que isso aqui é inútil, já que não vai ter botão de excluir item se o cara nem sequer tiver carrinho. Sob condições normais, eu retiraria esse snipet, mas preciso ver se por acaso ele é invocado na UI como condição para o travamento da página de carrinho, o muito provavelmente não acontece, mas eu tenho que checar de qualquer modo. 
             if (carrinho == null)
             {
                 throw new Exception("Você não possui um carrinho ativo.");
             }
 
-            var itemParaRemover = carrinho.Itens.FirstOrDefault(i => i.PesceId == pesceId);
+            var itemParaRemover = carrinho.Items.FirstOrDefault(i => i.PeixeId == pesceId);
 
             //provavelmente deve ter um pouquinho de lógica de checking duplicada, espalhada em umas 2 ou 3 classes, que acabei implementando por medo de dar algo errado, então depois vou pesquisar qual seria a melhor prática.
             if (itemParaRemover == null) throw new Exception("Este item não está no seu carrinho.");
@@ -103,27 +103,27 @@ namespace API_DB_PESCES_em_C__bonitona.Services
             var itensDTO = new List<ItemCarrinhoResponseDTO>();
             decimal total = 0;
 
-            foreach (var item in carrinho.Itens)
+            foreach (var item in carrinho.Items)
             {
-                if (item.Pesce == null || item.Pesce.Especie == null) continue;
+                if (item.Peixe == null || item.Peixe.Especie == null) continue;
 
                 // Encontra o preço exato com base na espécie, saúde e desenvolvimento atual do peixe
-                var precoTabela = item.Pesce.Especie.Precos.FirstOrDefault(p => 
-                    p.EstadoSaudeId == item.Pesce.EstadoSaudeId && 
-                    p.EstadoDesenvolvimentoId == item.Pesce.EstadoDesenvolvimentoId);
+                var precoTabela = item.Peixe.Especie.Precos.FirstOrDefault(p => 
+                    p.EstadoSaudeId == item.Peixe.HealthStateId && 
+                    p.EstadoDesenvolvimentoId == item.Peixe.EstadoDesenvolvimentoId);
 
                 decimal preco = precoTabela?.Valor ?? 0;
 
-                string nome = item.Pesce.Especie.NomeVulgar ?? item.Pesce.Especie.Taxon;
+                string nome = item.Peixe.Especie.NomeVulgar ?? item.Peixe.Especie.Taxon;
 
-                string imagem = item.Pesce.Especie.ImagemUrl;
+                string imagem = item.Peixe.Especie.ImagemUrl;
 
-                itensDTO.Add(new ItemCarrinhoResponseDTO(item.Id, item.PesceId, nome, preco, imagem));
+                itensDTO.Add(new ItemCarrinhoResponseDTO(item.Id, item.PeixeId, nome, preco, imagem));
 
                 total += preco;
             }
 
-            return new CarrinhoResponseDTO(carrinho.Id, carrinho.UsuarioId, total, itensDTO);
+            return new CarrinhoResponseDTO(carrinho.Id, carrinho.UserId, total, itensDTO);
         }
     }
 }

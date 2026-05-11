@@ -10,7 +10,7 @@ public partial class Peixe
 
     public int EspecieId { get; set; }
 
-    public int EstadoSaudeId { get; set; }
+    public int HealthStateId { get; set; }
 
     public int EstadoDesenvolvimentoId { get; set; }
 
